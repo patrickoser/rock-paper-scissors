@@ -40,3 +40,9 @@ const playerSelection = ("PaPeR");
 const computerSelection = getComputerChoice();
 
 console.log(playRound(playerSelection, computerSelection));
+
+// Comments here.
+
+function game() {
+    
+}
