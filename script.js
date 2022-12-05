@@ -39,10 +39,26 @@ function playRound(playerSelection, computerSelection) {
 const playerSelection = ("PaPeR");
 const computerSelection = getComputerChoice();
 
-console.log(playRound(playerSelection, computerSelection));
-
 // Comments here.
 
-function game() {
-    
+function game(playerScore, computerScore) {
+
+    for (let i = 0; i < 5; i++) {
+
+        let playerScore = 0;
+        let computerScore = 0;
+
+        playRound(playerSelection, computerSelection);
+
+        if (playerSelection == true) {
+            return playerScore++;
+         } else if (computerSelection == true) {
+                return computerScore++;
+         } else {
+                break;
+         }
+    }
+
 }
+
+console.log(game(playerScore, computerScore));
