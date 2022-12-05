@@ -43,22 +43,21 @@ const computerSelection = getComputerChoice();
 
 function game(playerScore, computerScore) {
 
-    for (let i = 0; i < 5; i++) {
+    let playerScore = 0;
+    let computerScore = 0;
 
-        let playerScore = 0;
-        let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
 
         playRound(playerSelection, computerSelection);
 
         if (playerSelection == true) {
             return playerScore++;
-         } else if (computerSelection == true) {
-                return computerScore++;
-         } else {
-                break;
-         }
+        } else if (computerSelection == true) {
+            return computerScore++;
+        } else {
+            break;
+        }
     }
-
 }
 
 console.log(game(playerScore, computerScore));
