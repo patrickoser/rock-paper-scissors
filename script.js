@@ -54,12 +54,14 @@ function game() {
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
 
-        if (playerScore > computerScore) {
+        if (playerScore > computerScore && i == 4) {
             console.log("You win the game!")
         } else if (playerScore < computerScore) {
-            console.log("You lose the game.")
+            console.log("You lose the game.");
+        } else if (playerScore == computerScore) {
+            console.log("It's a draw!");
         } else {
-            console.log("It's a draw!")
+            console.log("Is that all you got?!");
         }
     }
 }
