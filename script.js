@@ -45,7 +45,9 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// Comments here.
+// The for loop executes the rounds of the game as long as 'i' is less than 5.
+// The player is then prompted for an input and the previous function is then called upon in order to play a round.
+// Finally, the 'if, else if, else' conditional alerts the player the outcome of the game.
 
 function game() {
 
