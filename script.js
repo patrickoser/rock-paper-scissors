@@ -51,8 +51,8 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
 
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Rock, paper, or scissors?")
+    for (let i = 0; i < 1; i++) {
+        let playerSelection = button.id;
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
 
@@ -69,3 +69,22 @@ function game() {
 }
 
 console.log(game());
+
+// DOM STUFF
+
+const rpsContainer = document.querySelector('#rpsContainer');
+
+let rock = document.querySelector('#button');
+rock.addEventListener('click', function() {
+    playRound('rock');
+});
+
+let paper = document.querySelector('#paper');
+paper.addEventListener('click', function() {
+    playRound('paper');
+});
+
+let scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', function() {
+    playRound('scissors');
+});
