@@ -74,17 +74,17 @@ console.log(game());
 
 const rpsContainer = document.querySelector('#rpsContainer');
 
-let rock = document.querySelector('#button');
+let rock = document.querySelector('#rock');
 rock.addEventListener('click', function() {
-    playRound('rock');
+    playRound('rock', computerSelection);
 });
 
 let paper = document.querySelector('#paper');
 paper.addEventListener('click', function() {
-    playRound('paper');
+    playRound('paper', computerSelection);
 });
 
 let scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', function() {
-    playRound('scissors');
+    playRound('scissors', computerSelection);
 });
