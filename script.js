@@ -20,7 +20,6 @@ function getComputerChoice() {
 // calls the 'getComputerChoice' function for its randomized output.
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
 
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         computerScore++;
@@ -51,16 +50,16 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
 
-    for (let i = 0; i < 1; i++) {
-        let playerSelection = button.id;
-        const computerSelection = getComputerChoice();
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = document.querySelector(button.id);
+        let computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
 
         if (playerScore > computerScore && i == 4) {
             console.log("You win the game!")
-        } else if (playerScore < computerScore) {
+        } else if (playerScore < computerScore && i == 4) {
             console.log("You lose the game.");
-        } else if (playerScore == computerScore) {
+        } else if (playerScore == computerScore && i == 4) {
             console.log("It's a draw!");
         } else {
             console.log("Is that all you got?!");
@@ -70,21 +69,55 @@ function game() {
 
 console.log(game());
 
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    round = 0;
+
+}
+
 // DOM STUFF
 
 const rpsContainer = document.querySelector('#rpsContainer');
 
-let rock = document.querySelector('#rock');
-rock.addEventListener('click', function() {
-    playRound('rock', computerSelection);
-});
+    let rock = document.querySelector('#rock');
+    rock.addEventListener('click', function() {
+        playRound('rock', computerSelection);
+    });
 
-let paper = document.querySelector('#paper');
-paper.addEventListener('click', function() {
-    playRound('paper', computerSelection);
-});
+    let paper = document.querySelector('#paper');
+    paper.addEventListener('click', function() {
+        playRound('paper', computerSelection);
+    });
 
-let scissors = document.querySelector('#scissors');
-scissors.addEventListener('click', function() {
-    playRound('scissors', computerSelection);
-});
+    let scissors = document.querySelector('#scissors');
+    scissors.addEventListener('click', function() {
+        playRound('scissors', computerSelection);
+    });
+
+    let resetButton = document.createElement('button');
+    resetButton.textContent = 'RESET';
+    document.rpsContainer.appendChild(resetButton);
+    resetButton.addEventListener('click', function() {
+        resetGame();
+    });
+
+const displayContainer = document.createElement('div');
+displayContainer.classList.add('displayContainer');
+document.body.appendChild(displayContainer);
+
+    let roundDisplay = document.createElement('div');
+    roundDisplay.classList.add('roundDisplay');
+    document.displayContainer.appendChild(roundDisplay);
+
+    let resultDisplay = document.createElement('div');
+    resultDisplay.classList.add('resultDisplay');
+    document.displayContainer.appendChild(resultDisplay);
+
+    let playerScoreDisplay = document.createElement('div');
+    playerScoreDisplay.classList.add('playerScoreDisplay');
+    document.displayContainer.appendChild(playerScoreDisplay);
+
+    let computerScoreDisplay = document.createElement('div');
+    computerScoreDisplay.classList.add('computerScoreDisplay');
+    document.displayContainer.appendChild(computerScoreDisplay);
