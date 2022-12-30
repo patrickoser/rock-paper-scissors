@@ -23,24 +23,24 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         computerScore++;
-        return ("Paper beats rock. You lose.");
+        return resultDisplay.textContent = "Paper beats rock. You lose."
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         computerScore++;
-        return ("Scissors beats paper. You lose.");
+        return resultDisplay.textContent = "Scissors beats paper. You lose."
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         computerScore++;
-        return ("Rock beats scissors. You lose.");
+        return resultDisplay.textContent = "Rock beats scissors. You lose."
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         playerScore++;
-        return ("Rock beats scissors. You win!");
+        return resultDisplay.textContent = "Rock beats scissors. You win!"
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         playerScore++;
-        return ("Paper beats rock. You win!");
+        return resultDisplay.textContent = "Paper beats rock. You win!"
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         playerScore++;
-        return ("Scissors beats paper. You win!");
+        return resultDisplay.textContent = "Scissors beats paper. You win!"
     } else {
-        return ("Draw.");
+        return resultDisplay.textContent = "Draw."
     }
 }
 
@@ -56,13 +56,13 @@ function game() {
         console.log(playRound(playerSelection, computerSelection));
 
         if (playerScore > computerScore && i == 4) {
-            console.log("You win the game!")
+            return resultDisplay.textContent = " You win the game!"
         } else if (playerScore < computerScore && i == 4) {
-            console.log("You lose the game.");
+            return resultDisplay.textContent = " You lose the game."
         } else if (playerScore == computerScore && i == 4) {
-            console.log("It's a draw!");
+            return resultDisplay.textContent = " It's a draw!"
         } else {
-            console.log("Is that all you got?!");
+            return resultDisplay.textContent = " Is that all you got?!"
         }
     }
 }
@@ -73,7 +73,6 @@ function resetGame() {
     playerScore = 0;
     computerScore = 0;
     round = 0;
-
 }
 
 // DOM STUFF
@@ -97,27 +96,25 @@ const rpsContainer = document.querySelector('#rpsContainer');
 
     let resetButton = document.createElement('button');
     resetButton.textContent = 'RESET';
-    document.rpsContainer.appendChild(resetButton);
-    resetButton.addEventListener('click', function() {
-        resetGame();
-    });
+    rpsContainer.appendChild(resetButton);
+    resetButton.addEventListener('click', resetGame());
 
 const displayContainer = document.createElement('div');
 displayContainer.classList.add('displayContainer');
-document.body.appendChild(displayContainer);
+body.appendChild(displayContainer);
 
     let roundDisplay = document.createElement('div');
     roundDisplay.classList.add('roundDisplay');
-    document.displayContainer.appendChild(roundDisplay);
+    displayContainer.appendChild(roundDisplay);
 
     let resultDisplay = document.createElement('div');
     resultDisplay.classList.add('resultDisplay');
-    document.displayContainer.appendChild(resultDisplay);
+    displayContainer.appendChild(resultDisplay);
 
     let playerScoreDisplay = document.createElement('div');
     playerScoreDisplay.classList.add('playerScoreDisplay');
-    document.displayContainer.appendChild(playerScoreDisplay);
+    displayContainer.appendChild(playerScoreDisplay);
 
     let computerScoreDisplay = document.createElement('div');
     computerScoreDisplay.classList.add('computerScoreDisplay');
-    document.displayContainer.appendChild(computerScoreDisplay);
+    displayContainer.appendChild(computerScoreDisplay);
