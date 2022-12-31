@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+
+.container {
+    border: red 1px solid;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+
+#displayContainer {
+    border: red 1px solid;
+    display: flex;
+
+}
+
+.gameDisplayBox {
+    border: red 1px solid;
+}
+
+.playerDisplayBox {
+    border: red 1px solid;
+}
+
+.computerDisplayBox {
+    border: red 1px solid;
+}
+
+#rpsContainer {
+    border: red 1px solid;
+    display: flex;
+
+}
+
+.rockBox {
+    border: red 1px solid;
+}
+
+.paperBox {
+    border: red 1px solid;
+}
+
+.scissorsBox {
+    border: red 1px solid;
+}
+
+.resetBox {
+    border: red 1px solid;
+}

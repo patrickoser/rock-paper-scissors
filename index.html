@@ -5,35 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <div id="displayContainer">
-        <div class="gameDisplayBox">
-            <div class="roundDisplay"></div>
-            <div class="resultDisplay"></div>
+    <div class="container">
+        <div id="displayContainer">
+            <div class="gameDisplayBox">
+                <div class="roundDisplay"></div>
+                <div class="resultDisplay"></div>
+            </div>
+            <div class="playerDisplayBox">
+                <div class="playerScoreDisplay"></div>
+                <div class="playerChoiceDisplay"></div>
+            </div>
+            <div class="computerDisplayBox">
+                <div class="computerScoreDisplay"></div>
+                <div class="computerChoiceDisplay"></div>
+            </div>
         </div>
-        <div class="playerDisplayBox">
-            <div class="playerScoreDisplay"></div>
-            <div class="playerChoiceDisplay"></div>
-        </div>
-        <div class="computerDisplayBox">
-            <div class="computerScoreDisplay"></div>
-            <div class="computerChoiceDisplay"></div>
-        </div>
-    </div>
-    <div id="rpsContainer">
-        <div class="rockBox">
-            <button class="rockBtn" value="rock">ROCK</button>
-        </div>
-        <div class="paperBox">
-            <button class="paperBtn" value="paper">PAPER</button>
-        </div>
-        <div class="scissorsBox">
-            <button class="scissorsBtn" value="scissors">SCISSORS</button>
-        </div>
-        <div class="resetBox">
-            <button class="reset">RESET</button>
+        <div id="rpsContainer">
+            <div class="rockBox">
+                <button class="rockBtn" value="rock">ROCK</button>
+            </div>
+            <div class="paperBox">
+                <button class="paperBtn" value="paper">PAPER</button>
+            </div>
+            <div class="scissorsBox">
+                <button class="scissorsBtn" value="scissors">SCISSORS</button>
+            </div>
+            <div class="resetBox">
+                <button class="reset">RESET</button>
+            </div>
         </div>
     </div>
 </body>
