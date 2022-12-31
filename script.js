@@ -1,3 +1,39 @@
+const rpsContainer = document.querySelector('#rpsContainer');
+
+    let rock = document.querySelector('.rock');
+    rock.addEventListener('click', playRound('rock'));
+
+    let paper = document.querySelector('.paper');
+    paper.addEventListener('click', playRound('paper'));
+
+    let scissors = document.querySelector('.scissors');
+    scissors.addEventListener('click', playRound('scissors'));
+
+    let resetButton = document.querySelector('.reset');
+    resetButton.textContent = 'RESET';
+    rpsContainer.appendChild(resetButton);
+    resetButton.addEventListener('click', resetGame());
+
+const displayContainer = document.createElement('div');
+displayContainer.classList.add('displayContainer');
+body.appendChild(displayContainer);
+
+    let roundDisplay = document.createElement('div');
+    roundDisplay.classList.add('roundDisplay');
+    displayContainer.appendChild(roundDisplay);
+
+    let resultDisplay = document.createElement('div');
+    resultDisplay.classList.add('resultDisplay');
+    displayContainer.appendChild(resultDisplay);
+
+    let playerScoreDisplay = document.createElement('div');
+    playerScoreDisplay.classList.add('playerScoreDisplay');
+    displayContainer.appendChild(playerScoreDisplay);
+
+    let computerScoreDisplay = document.createElement('div');
+    computerScoreDisplay.classList.add('computerScoreDisplay');
+    displayContainer.appendChild(computerScoreDisplay);
+
 // The square brackets are used to access elements of an array.
 // The expression inside the square brackets is evaluated to determine which element to return.
 // In this case, computerChoice is a random number between 0 and 2.
@@ -51,7 +87,9 @@ function playRound(playerSelection, computerSelection) {
 function game() {
 
     for (let i = 0; i < 5; i++) {
-        let playerSelection = document.querySelector(button.id);
+
+        // Not sure playerSelection needs to be declared here since the choice is decided when a specific button is clicked.
+       
         let computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
 
@@ -77,44 +115,3 @@ function resetGame() {
 
 // DOM STUFF
 
-const rpsContainer = document.querySelector('#rpsContainer');
-
-    let rock = document.querySelector('#rock');
-    rock.addEventListener('click', function() {
-        playRound('rock', computerSelection);
-    });
-
-    let paper = document.querySelector('#paper');
-    paper.addEventListener('click', function() {
-        playRound('paper', computerSelection);
-    });
-
-    let scissors = document.querySelector('#scissors');
-    scissors.addEventListener('click', function() {
-        playRound('scissors', computerSelection);
-    });
-
-    let resetButton = document.createElement('button');
-    resetButton.textContent = 'RESET';
-    rpsContainer.appendChild(resetButton);
-    resetButton.addEventListener('click', resetGame());
-
-const displayContainer = document.createElement('div');
-displayContainer.classList.add('displayContainer');
-body.appendChild(displayContainer);
-
-    let roundDisplay = document.createElement('div');
-    roundDisplay.classList.add('roundDisplay');
-    displayContainer.appendChild(roundDisplay);
-
-    let resultDisplay = document.createElement('div');
-    resultDisplay.classList.add('resultDisplay');
-    displayContainer.appendChild(resultDisplay);
-
-    let playerScoreDisplay = document.createElement('div');
-    playerScoreDisplay.classList.add('playerScoreDisplay');
-    displayContainer.appendChild(playerScoreDisplay);
-
-    let computerScoreDisplay = document.createElement('div');
-    computerScoreDisplay.classList.add('computerScoreDisplay');
-    displayContainer.appendChild(computerScoreDisplay);
