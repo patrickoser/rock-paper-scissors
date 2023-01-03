@@ -1,52 +1,60 @@
 body {
     display: flex;
     flex-direction: column;
-    flex: auto;
+    flex-wrap: wrap;
 }
 
 .container {
     border: red 1px solid;
     display: flex;
     flex-direction: column;
-    flex: auto;
+    flex-wrap: wrap;
+    flex: 1;
 }
 
 #displayContainer {
     border: red 1px solid;
     display: flex;
-
+    flex: 1;
 }
 
 .gameDisplayBox {
     border: red 1px solid;
+    flex: 1;
 }
 
 .playerDisplayBox {
     border: red 1px solid;
+    flex: 1;
 }
 
 .computerDisplayBox {
     border: red 1px solid;
+    flex: 1;
 }
 
 #rpsContainer {
     border: red 1px solid;
     display: flex;
-
+    flex: 1;
 }
 
 .rockBox {
     border: red 1px solid;
+    flex: 1;
 }
 
 .paperBox {
     border: red 1px solid;
+    flex: 1;
 }
 
 .scissorsBox {
     border: red 1px solid;
+    flex: 1;
 }
 
 .resetBox {
     border: red 1px solid;
+    flex: 1;
 }

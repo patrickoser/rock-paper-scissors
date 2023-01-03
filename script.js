@@ -89,7 +89,7 @@ function game() {
     for (let i = 0; i < 5; i++) {
 
         // Not sure playerSelection needs to be declared here since the choice is decided when a specific button is clicked.
-       
+       let playerSelection = event.target.value
         let computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
 
