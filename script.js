@@ -1,38 +1,26 @@
 const rpsContainer = document.querySelector('#rpsContainer');
 
     let rock = document.querySelector('.rock');
-    rock.addEventListener('click', playRound('rock'));
+    rock.addEventListener('click', playRound);
 
     let paper = document.querySelector('.paper');
-    paper.addEventListener('click', playRound('paper'));
+    paper.addEventListener('click', playRound);
 
     let scissors = document.querySelector('.scissors');
-    scissors.addEventListener('click', playRound('scissors'));
+    scissors.addEventListener('click', playRound);
 
     let resetButton = document.querySelector('.reset');
-    resetButton.textContent = 'RESET';
-    rpsContainer.appendChild(resetButton);
     resetButton.addEventListener('click', resetGame());
 
-const displayContainer = document.createElement('div');
-displayContainer.classList.add('displayContainer');
-body.appendChild(displayContainer);
+const displayContainer = document.createElement('.displayContainer');
 
-    let roundDisplay = document.createElement('div');
-    roundDisplay.classList.add('roundDisplay');
-    displayContainer.appendChild(roundDisplay);
+    let roundDisplay = document.querySelector('.roundDisplay');
 
-    let resultDisplay = document.createElement('div');
-    resultDisplay.classList.add('resultDisplay');
-    displayContainer.appendChild(resultDisplay);
+    let resultDisplay = document.createElement('.resultDisplay');
 
-    let playerScoreDisplay = document.createElement('div');
-    playerScoreDisplay.classList.add('playerScoreDisplay');
-    displayContainer.appendChild(playerScoreDisplay);
+    let playerScoreDisplay = document.createElement('.playerScoreDisplay');
 
-    let computerScoreDisplay = document.createElement('div');
-    computerScoreDisplay.classList.add('computerScoreDisplay');
-    displayContainer.appendChild(computerScoreDisplay);
+    let computerScoreDisplay = document.createElement('.computerScoreDisplay');
 
 // The square brackets are used to access elements of an array.
 // The expression inside the square brackets is evaluated to determine which element to return.
@@ -56,6 +44,14 @@ function getComputerChoice() {
 // calls the 'getComputerChoice' function for its randomized output.
 
 function playRound(playerSelection, computerSelection) {
+
+    // I moved playerSelection and computerSelection over from the 'game' function, still unsure if that was the right move but logically made sense at the time.
+    // Still have to figure out where to pass the 'event' object as an argument since 'playRound' already has a pair or args.
+    // I might have to create a new function just to handle the act of receiving the players selection
+    // before passing it over to the 'playerSelection' arg within 'playRound'
+
+    let playerSelection = e.target.value;
+    let computerSelection = getComputerChoice();
 
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         computerScore++;
@@ -88,9 +84,15 @@ function game() {
 
     for (let i = 0; i < 5; i++) {
 
-        // Not sure playerSelection needs to be declared here since the choice is decided when a specific button is clicked.
-       let playerSelection = event.target.value
-        let computerSelection = getComputerChoice();
+        // I moved computerSelection and playerSelection over to the playRound function because that seems to make more sense
+        // but I could be wrong.
+
+        // I also feel like I should move 'playRound' outside of the loop but still within the 'game' function.
+        // If it remains inside wouldn't that mean that it would continously get called after just one click/event trigger?
+        // Moving it just outside the loop would mean that the click event would need to be triggered each time
+        // and keep the 'game function from looping until the condition was met while only using the value of the first click event
+        // and never pausing to wait for another click. Still not sure but felt worth it to write down so I can check later.
+
         console.log(playRound(playerSelection, computerSelection));
 
         if (playerScore > computerScore && i == 4) {
@@ -111,6 +113,15 @@ function resetGame() {
     playerScore = 0;
     computerScore = 0;
     round = 0;
+}
+
+function getPlayerSelection(e) {
+
+    // Might need () around 'e.target.value'
+    
+    let playerSelection = e.target.value; 
+    // playerChoice = e.target.textContent;
+    playRound(playerSelection, getComputerChoice());
 }
 
 // DOM STUFF
