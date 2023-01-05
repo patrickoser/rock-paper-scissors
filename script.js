@@ -12,20 +12,20 @@ const rpsContainer = document.querySelector('#rpsContainer');
     let resetButton = document.querySelector('.reset');
     resetButton.addEventListener('click', resetGame());
 
-const displayContainer = document.createElement('.displayContainer');
+const displayContainer = document.querySelector('.displayContainer');
 
     let roundDisplay = document.querySelector('.roundDisplay');
 
-    let resultDisplay = document.createElement('.resultDisplay');
+    let resultDisplay = document.querySelector('.resultDisplay');
 
-    let playerScoreDisplay = document.createElement('.playerScoreDisplay');
+    let playerScoreDisplay = document.querySelector('.playerScoreDisplay');
 
-    let computerScoreDisplay = document.createElement('.computerScoreDisplay');
+    let computerScoreDisplay = document.querySelector('.computerScoreDisplay');
 
 // The square brackets are used to access elements of an array.
 // The expression inside the square brackets is evaluated to determine which element to return.
 // In this case, computerChoice is a random number between 0 and 2.
-// So choices[computerChoice] will return either 'rock', 'paper', or 'scissors'.
+// So choices[computerChoice] will return either 'rock', 'paper', or 'scissors', in otherwords 0, 1, or 2.
 
 let computerScore = 0;
 let playerScore = 0;
@@ -54,23 +54,23 @@ function playRound(playerSelection, computerSelection) {
     let computerSelection = getComputerChoice();
 
     if (playerSelection === 'rock' && computerSelection === 'paper') {
-        computerScore++;
-        return resultDisplay.textContent = "Paper beats rock. You lose."
+        computerScoreDisplay.textContent = computerScore++;
+        resultDisplay.textContent = "Paper beats rock. You lose."
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        computerScore++;
-        return resultDisplay.textContent = "Scissors beats paper. You lose."
+        computerScoreDisplay.textContent = computerScore++;
+        resultDisplay.textContent = "Scissors beats paper. You lose."
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        computerScore++;
-        return resultDisplay.textContent = "Rock beats scissors. You lose."
+        computerScoreDisplay.textContent = computerScore++;
+        resultDisplay.textContent = "Rock beats scissors. You lose."
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        playerScore++;
-        return resultDisplay.textContent = "Rock beats scissors. You win!"
+        playerScoreDisplay.textContent = playerScore++;
+        resultDisplay.textContent = "Rock beats scissors. You win!"
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        playerScore++;
-        return resultDisplay.textContent = "Paper beats rock. You win!"
+        playerScoreDisplay.textContent = playerScore++;
+        resultDisplay.textContent = "Paper beats rock. You win!"
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        playerScore++;
-        return resultDisplay.textContent = "Scissors beats paper. You win!"
+        playerScoreDisplay.textContent = playerScore++;
+        resultDisplay.textContent = "Scissors beats paper. You win!"
     } else {
         return resultDisplay.textContent = "Draw."
     }
@@ -81,6 +81,11 @@ function playRound(playerSelection, computerSelection) {
 // Finally, the 'if, else if, else' conditional alerts the player the outcome of the game.
 
 function game() {
+
+    // 'game' feels like dead/useless at this point since 'playRound' is the one being called upon.
+    // I think I would need to call upon 'playRound' within 'game' and assign 'game' as the event handler for each button click event.
+    // 'game' doesn't currently have any parameters/args so this might be a good solution. I could account for the round changes
+    // within 'game' as well.
 
     for (let i = 0; i < 5; i++) {
 
@@ -95,11 +100,13 @@ function game() {
 
         console.log(playRound(playerSelection, computerSelection));
 
-        if (playerScore > computerScore && i == 4) {
+
+
+        if (playerScore > computerScore && i == 5) {
             return resultDisplay.textContent = " You win the game!"
-        } else if (playerScore < computerScore && i == 4) {
+        } else if (playerScore < computerScore && i == 5) {
             return resultDisplay.textContent = " You lose the game."
-        } else if (playerScore == computerScore && i == 4) {
+        } else if (playerScore == computerScore && i == 5) {
             return resultDisplay.textContent = " It's a draw!"
         } else {
             return resultDisplay.textContent = " Is that all you got?!"
@@ -107,22 +114,20 @@ function game() {
     }
 }
 
-console.log(game());
-
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
     round = 0;
 }
 
-function getPlayerSelection(e) {
+/* function getPlayerSelection(e) {
 
     // Might need () around 'e.target.value'
     
     let playerSelection = e.target.value; 
     // playerChoice = e.target.textContent;
-    playRound(playerSelection, getComputerChoice());
-}
+    playRound(playerSelection, getComputerChoice()); 
+}*/
 
-// DOM STUFF
+DOM STUFF
 
