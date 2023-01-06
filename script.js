@@ -1,15 +1,15 @@
 const rpsContainer = document.querySelector('#rpsContainer');
 
-    let rock = document.querySelector('.rock');
-    rock.addEventListener('click', playRound);
+    let rock = document.querySelector('.rockBtn');
+    rock.addEventListener('click', game());
 
-    let paper = document.querySelector('.paper');
-    paper.addEventListener('click', playRound);
+    let paper = document.querySelector('.paperBtn');
+    paper.addEventListener('click', game());
 
-    let scissors = document.querySelector('.scissors');
-    scissors.addEventListener('click', playRound);
+    let scissors = document.querySelector('.scissorsBtn');
+    scissors.addEventListener('click', game());
 
-    let resetButton = document.querySelector('.reset');
+    let resetButton = document.querySelector('.resetBtn');
     resetButton.addEventListener('click', resetGame());
 
 const displayContainer = document.querySelector('.displayContainer');
@@ -29,6 +29,7 @@ const displayContainer = document.querySelector('.displayContainer');
 
 let computerScore = 0;
 let playerScore = 0;
+let round = 0;
 
 function getComputerChoice() {
     const choices = ['rock', 'paper', 'scissors'];
@@ -50,8 +51,8 @@ function playRound(playerSelection, computerSelection) {
     // I might have to create a new function just to handle the act of receiving the players selection
     // before passing it over to the 'playerSelection' arg within 'playRound'
 
-    let playerSelection = e.target.value;
-    let computerSelection = getComputerChoice();
+    playerSelection = e.target.value;
+    computerSelection = getComputerChoice();
 
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         computerScoreDisplay.textContent = computerScore++;
@@ -80,7 +81,7 @@ function playRound(playerSelection, computerSelection) {
 // The player is then prompted for an input and the previous function is then called upon in order to play a round.
 // Finally, the 'if, else if, else' conditional alerts the player the outcome of the game.
 
-function game() {
+function game(e) {
 
     // 'game' feels like dead/useless at this point since 'playRound' is the one being called upon.
     // I think I would need to call upon 'playRound' within 'game' and assign 'game' as the event handler for each button click event.
@@ -98,9 +99,8 @@ function game() {
         // and keep the 'game function from looping until the condition was met while only using the value of the first click event
         // and never pausing to wait for another click. Still not sure but felt worth it to write down so I can check later.
 
-        console.log(playRound(playerSelection, computerSelection));
-
-
+        playRound(playerSelection, computerSelection);
+        roundDisplay.textContent = round++;
 
         if (playerScore > computerScore && i == 5) {
             return resultDisplay.textContent = " You win the game!"
@@ -125,9 +125,9 @@ function resetGame() {
     // Might need () around 'e.target.value'
     
     let playerSelection = e.target.value; 
-    // playerChoice = e.target.textContent;
+    playerChoice = e.target.textContent;
     playRound(playerSelection, getComputerChoice()); 
 }*/
 
-DOM STUFF
+// DOM STUFF
 
