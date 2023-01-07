@@ -1,16 +1,16 @@
 const rpsContainer = document.querySelector('#rpsContainer');
 
     let rock = document.querySelector('.rockBtn');
-    rock.addEventListener('click', game());
+    rock.addEventListener('click', game);
 
     let paper = document.querySelector('.paperBtn');
-    paper.addEventListener('click', game());
+    paper.addEventListener('click', game);
 
     let scissors = document.querySelector('.scissorsBtn');
-    scissors.addEventListener('click', game());
+    scissors.addEventListener('click', game);
 
     let resetButton = document.querySelector('.resetBtn');
-    resetButton.addEventListener('click', resetGame());
+    resetButton.addEventListener('click', resetGame);
 
 const displayContainer = document.querySelector('.displayContainer');
 
@@ -20,7 +20,11 @@ const displayContainer = document.querySelector('.displayContainer');
 
     let playerScoreDisplay = document.querySelector('.playerScoreDisplay');
 
+    let playerChoiceDisplay = document.querySelector('.playerChoiceDisplay');
+
     let computerScoreDisplay = document.querySelector('.computerScoreDisplay');
+
+    let computerChoiceDisplay = document.querySelector('.computerChoiceDisplay');
 
 // The square brackets are used to access elements of an array.
 // The expression inside the square brackets is evaluated to determine which element to return.
@@ -51,28 +55,39 @@ function playRound(playerSelection, computerSelection) {
     // I might have to create a new function just to handle the act of receiving the players selection
     // before passing it over to the 'playerSelection' arg within 'playRound'
 
-    playerSelection = e.target.value;
-    computerSelection = getComputerChoice();
-
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         computerScoreDisplay.textContent = computerScore++;
-        resultDisplay.textContent = "Paper beats rock. You lose."
+        computerChoiceDisplay.textContent = computerSelection;
+        playerChoiceDisplay.textContent = playerSelection;
+        return resultDisplay.textContent = "Paper beats rock. You lose."
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         computerScoreDisplay.textContent = computerScore++;
-        resultDisplay.textContent = "Scissors beats paper. You lose."
+        computerChoiceDisplay.textContent = computerSelection;
+        playerChoiceDisplay.textContent = playerSelection;
+        return resultDisplay.textContent = "Scissors beats paper. You lose."
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         computerScoreDisplay.textContent = computerScore++;
-        resultDisplay.textContent = "Rock beats scissors. You lose."
+        computerChoiceDisplay.textContent = computerSelection;
+        playerChoiceDisplay.textContent = playerSelection;
+        return resultDisplay.textContent = "Rock beats scissors. You lose."
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         playerScoreDisplay.textContent = playerScore++;
-        resultDisplay.textContent = "Rock beats scissors. You win!"
+        computerChoiceDisplay.textContent = computerSelection;
+        playerChoiceDisplay.textContent = playerSelection;
+        return resultDisplay.textContent = "Rock beats scissors. You win!"
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         playerScoreDisplay.textContent = playerScore++;
-        resultDisplay.textContent = "Paper beats rock. You win!"
+        computerChoiceDisplay.textContent = computerSelection;
+        playerChoiceDisplay.textContent = playerSelection;
+        return resultDisplay.textContent = "Paper beats rock. You win!"
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         playerScoreDisplay.textContent = playerScore++;
-        resultDisplay.textContent = "Scissors beats paper. You win!"
+        computerChoiceDisplay.textContent = computerSelection;
+        playerChoiceDisplay.textContent = playerSelection;
+        return resultDisplay.textContent = "Scissors beats paper. You win!"
     } else {
+        computerChoiceDisplay.textContent = computerSelection;
+        playerChoiceDisplay.textContent = playerSelection;
         return resultDisplay.textContent = "Draw."
     }
 }
@@ -88,10 +103,10 @@ function game(e) {
     // 'game' doesn't currently have any parameters/args so this might be a good solution. I could account for the round changes
     // within 'game' as well.
 
-    for (let i = 0; i < 5; i++) {
+    let playerSelection = (e.target.value);
+    let computerSelection = getComputerChoice();
 
-        // I moved computerSelection and playerSelection over to the playRound function because that seems to make more sense
-        // but I could be wrong.
+    for (let i = 0; i < 5; i++) {
 
         // I also feel like I should move 'playRound' outside of the loop but still within the 'game' function.
         // If it remains inside wouldn't that mean that it would continously get called after just one click/event trigger?
@@ -103,18 +118,18 @@ function game(e) {
         roundDisplay.textContent = round++;
 
         if (playerScore > computerScore && i == 5) {
-            return resultDisplay.textContent = " You win the game!"
+            return resultDisplay.textContent = " You win the game!";
         } else if (playerScore < computerScore && i == 5) {
-            return resultDisplay.textContent = " You lose the game."
+            return resultDisplay.textContent = " You lose the game.";
         } else if (playerScore == computerScore && i == 5) {
-            return resultDisplay.textContent = " It's a draw!"
+            return resultDisplay.textContent = " It's a draw!";
         } else {
-            return resultDisplay.textContent = " Is that all you got?!"
+            return resultDisplay.textContent = " Is that all you got?!";
         }
     }
 }
 
-function resetGame() {
+function resetGame(e) {
     playerScore = 0;
     computerScore = 0;
     round = 0;
@@ -128,6 +143,3 @@ function resetGame() {
     playerChoice = e.target.textContent;
     playRound(playerSelection, getComputerChoice()); 
 }*/
-
-// DOM STUFF
-
