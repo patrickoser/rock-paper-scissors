@@ -1,5 +1,7 @@
 const rpsContainer = document.querySelector('#rpsContainer');
 
+    let buttons = document.querySelectorAll('button');
+
     let rock = document.querySelector('.rockBtn');
     rock.addEventListener('click', game);
 
@@ -47,55 +49,57 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-    if (playerSelection === 'Rock' && computerSelection === 'Paper') {
-        return resultDisplay.textContent = "Paper beats Rock. You lose."
+    if (playerSelection == computerSelection) {
+        return resultDisplay.textContent = "Draw.";
+    } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
+        return resultDisplay.textContent = "Paper beats Rock. You lose.";
     } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
-        return resultDisplay.textContent = "Scissors beats Paper. You lose."
+        return resultDisplay.textContent = "Scissors beats Paper. You lose.";
     } else if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
-        return resultDisplay.textContent = "Rock beats Scissors. You lose."
+        return resultDisplay.textContent = "Rock beats Scissors. You lose.";
     } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
-        return resultDisplay.textContent = "Rock beats Scissors. You win!"
+        return resultDisplay.textContent = "Rock beats Scissors. You win!";
     } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-        return resultDisplay.textContent = "Paper beats Rock. You win!"
+        return resultDisplay.textContent = "Paper beats Rock. You win!";
     } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-        return resultDisplay.textContent = "Scissors beats Paper. You win!"
-    } else {
-        return resultDisplay.textContent = "Draw."
-    }
+        return resultDisplay.textContent = "Scissors beats Paper. You win!";
+    } 
 }
 
 function game(e) {
     let playerSelection = (e.target.value);
-    let compMove = getComputerChoice();
-    let pR = playRound(e.target.value, compMove);
+    let computerSelection = getComputerChoice();
+    let pR = playRound(e.target.value, computerSelection);
     
-    if (pR == "${e.target.value} beats " + compMove + ". You win!") {
+    if (pR == playerSelection + " beats " + computerSelection + ". You win!") {
         playerScoreDisplay.textContent = playerScore += 1;
-        computerChoiceDisplay.textContent = compMove;
+        computerChoiceDisplay.textContent = computerSelection;
         playerChoiceDisplay.textContent = playerSelection;
         roundDisplay.textContent = round += 1;
 
-    } else if (pR = compMove + " beats ${e.target.value}. You lose.") {
+    } else if (pR == computerSelection + " beats " + playerSelection + ". You lose.") {
         computerScoreDisplay.textContent = computerScore += 1;
-        computerChoiceDisplay.textContent = compMove;
+        computerChoiceDisplay.textContent = computerSelection;
         playerChoiceDisplay.textContent = playerSelection;
         roundDisplay.textContent = round += 1;
     } else {
-        computerChoiceDisplay.textContent = compMove;
+        computerChoiceDisplay.textContent = computerSelection;
         playerChoiceDisplay.textContent = playerSelection;
+        roundDisplay.textContent = round += 1;
     }
 
     if (playerScore == 5) {
-        resultDisplay.textContent = "<br>You win the game and kept SkyNet at bay for one more day, congrats!";
+        resultDisplay.textContent = "You win the game and kept SkyNet at bay for one more day, congrats!";
+        disableButtons();
     } else if (computerScore == 5) {
-        resultDisplay.textContent = "<br><br>You lost the game and surrendered control to SkyNet... Thanks a lot bro!";
+        resultDisplay.textContent = "You lost the game and surrendered control to SkyNet... Thanks a lot bro!";
+        disableButtons();
     }
-/* disableButtons(); */
 }
 
 
-/* function disableButtons() {
-    button.forEach(btn => {
+function disableButtons() {
+    buttons.forEach(btn => {
         btn.disabled = true;
     })
-} */
+}
